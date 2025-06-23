@@ -23,6 +23,7 @@ export interface CodeHighlight {
     title: string
     description: string
     documentationUrl?: string
+    r3fDocumentationUrl?: string
   }
 }
 

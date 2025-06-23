@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Lighting } from './Lighting'
@@ -31,6 +32,19 @@ export function DemoLayout({
       {/* 背景色を確実に適用するためのラッパー */}
       <div className="bg-gray-900 min-h-full">
         <div className="container mx-auto px-4 py-8">
+          {/* ナビゲーション */}
+          <div className="mb-6">
+            <Link 
+              href="/demos" 
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200 text-sm"
+            >
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              デモ一覧に戻る
+            </Link>
+          </div>
+
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">{title}</h1>
             <p className="text-gray-300">{description}</p>
