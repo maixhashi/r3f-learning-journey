@@ -10,9 +10,10 @@ interface CodeViewerProps {
   features: FeatureFile[]
   fileContents: Record<string, string>
   selectedFeature?: FeatureFile | null
+  selectedFile?: string | null
 }
 
-export function CodeViewer({ features, fileContents, selectedFeature }: CodeViewerProps) {
+export function CodeViewer({ features, fileContents, selectedFeature, selectedFile }: CodeViewerProps) {
   const [activeFeature, setActiveFeature] = useState<FeatureFile | null>(null)
   const [activeSection, setActiveSection] = useState<CodeSection | null>(null)
   const [tooltipState, setTooltipState] = useState<{
@@ -38,6 +39,27 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
       }
     }
   }, [selectedFeature, features])
+
+  // ファイル拡張子から言語を推測する関数
+  const getLanguageFromFileName = (fileName: string): string => {
+    const extension = fileName.split('.').pop()?.toLowerCase()
+    switch (extension) {
+      case 'ts':
+      case 'tsx':
+        return 'typescript'
+      case 'js':
+      case 'jsx':
+        return 'javascript'
+      case 'css':
+        return 'css'
+      case 'html':
+        return 'html'
+      case 'json':
+        return 'json'
+      default:
+        return 'typescript'
+    }
+  }
 
   // ハイライト行を計算する関数
   const getHighlightLines = (highlights: CodeHighlight[] = []): number[] => {
@@ -96,10 +118,42 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
     setTooltipState(prev => ({ ...prev, isVisible: false }))
   }
 
+  // 選択されたファイルの内容を直接表示する場合
+  if (selectedFile && !activeFeature) {
+    const fileContent = fileContents[selectedFile]
+    if (fileContent) {
+      return (
+        <div className="bg-gray-700 rounded p-4 h-full flex flex-col">
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold text-white mb-2">📁 {selectedFile}</h3>
+            <p className="text-sm text-gray-300">選択されたファイルの内容</p>
+          </div>
+          
+          <div className="flex-1 overflow-auto">
+            <SyntaxHighlighter
+              language={getLanguageFromFileName(selectedFile)}
+              style={vscDarkPlus}
+              customStyle={{
+                margin: 0,
+                borderRadius: '6px',
+                fontSize: '12px',
+                lineHeight: '1.4'
+              }}
+              showLineNumbers={true}
+              wrapLines={true}
+            >
+              {fileContent}
+            </SyntaxHighlighter>
+          </div>
+        </div>
+      )
+    }
+  }
+
   if (!activeFeature) {
     return (
       <div className="bg-gray-700 rounded p-4 h-full flex items-center justify-center">
-        <p className="text-gray-400">機能を選択してコードを表示</p>
+        <p className="text-gray-400">機能またはファイルを選択してコードを表示</p>
       </div>
     )
   }
@@ -117,7 +171,7 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
               <button
                 key={index}
                 className={`px-3 py-1 text-xs rounded ${
-                  activeSection === section
+                    activeSection === section
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
                 }`}
@@ -145,7 +199,7 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
             </div>
             
             <SyntaxHighlighter
-              language="typescript"
+              language={getLanguageFromFileName(activeSection.fileName)}
               style={vscDarkPlus}
               customStyle={{
                 margin: 0,
@@ -161,13 +215,13 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
             </SyntaxHighlighter>
           </div>
         ) : (
-          // ファイル内容を直接表示
+          // ファイル内容を直接表示（選択されたファイルがある場合はそれを優先）
           <div>
-            {activeFeature.files.map(filePath => (
-              <div key={filePath} className="mb-4">
-                <h4 className="text-md font-medium text-white mb-2">📁 {filePath}</h4>
+            {selectedFile && fileContents[selectedFile] ? (
+              <div className="mb-4">
+                <h4 className="text-md font-medium text-white mb-2">📁 {selectedFile}</h4>
                 <SyntaxHighlighter
-                  language="typescript"
+                  language={getLanguageFromFileName(selectedFile)}
                   style={vscDarkPlus}
                   customStyle={{
                     margin: 0,
@@ -175,12 +229,34 @@ export function CodeViewer({ features, fileContents, selectedFeature }: CodeView
                     fontSize: '12px',
                     lineHeight: '1.4'
                   }}
-                  wrapLongLines={true}
+                  showLineNumbers={true}
+                  wrapLines={true}
                 >
-                  {fileContents[filePath] || '// ファイル内容が見つかりません'}
+                  {fileContents[selectedFile]}
                 </SyntaxHighlighter>
               </div>
-            ))}
+            ) : (
+              // 機能に関連するすべてのファイルを表示
+              activeFeature.files.map(filePath => (
+                <div key={filePath} className="mb-4">
+                  <h4 className="text-md font-medium text-white mb-2">📁 {filePath}</h4>
+                  <SyntaxHighlighter
+                    language={getLanguageFromFileName(filePath)}
+                    style={vscDarkPlus}
+                    customStyle={{
+                      margin: 0,
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      lineHeight: '1.4'
+                    }}
+                    showLineNumbers={true}
+                    wrapLines={true}
+                  >
+                    {fileContents[filePath] || '// ファイル内容が見つかりません'}
+                  </SyntaxHighlighter>
+                </div>
+              ))
+            )}
           </div>
         )}
       </div>

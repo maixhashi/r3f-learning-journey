@@ -1,18 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FeatureFile } from '../../config/types'
 
 interface FeatureSelectorProps {
   features: FeatureFile[]
+  selectedFeature?: FeatureFile | null
   onFeatureSelect?: (feature: FeatureFile) => void
 }
 
-export function FeatureSelector({ features, onFeatureSelect }: FeatureSelectorProps) {
-  const [selectedFeature, setSelectedFeature] = useState<string | null>(null)
+export function FeatureSelector({ features, selectedFeature, onFeatureSelect }: FeatureSelectorProps) {
+  const [internalSelectedFeature, setInternalSelectedFeature] = useState<string | null>(null)
+
+  // 外部からの選択状態を反映
+  useEffect(() => {
+    if (selectedFeature) {
+      setInternalSelectedFeature(selectedFeature.id)
+    }
+  }, [selectedFeature])
 
   const handleFeatureClick = (feature: FeatureFile) => {
-    setSelectedFeature(feature.id)
+    setInternalSelectedFeature(feature.id)
     onFeatureSelect?.(feature)
   }
 
@@ -23,8 +31,8 @@ export function FeatureSelector({ features, onFeatureSelect }: FeatureSelectorPr
         {features.map((feature) => (
           <div
             key={feature.id}
-            className={`p-2 cursor-pointer hover:bg-gray-700 border-b border-gray-600 ${
-              selectedFeature === feature.id ? 'bg-gray-700' : ''
+            className={`p-2 cursor-pointer hover:bg-gray-700 border-b border-gray-600 transition-colors duration-200 ${
+              internalSelectedFeature === feature.id ? 'bg-blue-600' : ''
             }`}
             onClick={() => handleFeatureClick(feature)}
           >

@@ -26,6 +26,30 @@ export function DemoLayout({
   children 
 }: DemoLayoutProps) {
   const [selectedFeature, setSelectedFeature] = useState<FeatureFile | null>(null)
+  const [selectedFile, setSelectedFile] = useState<string | null>(null)
+
+  // ファイルが選択された時の処理
+  const handleFileSelect = (fileName: string) => {
+    setSelectedFile(fileName)
+    
+    // 選択されたファイルに関連する機能を検索
+    const relatedFeature = features.find(feature => 
+      feature.files.some(file => file.includes(fileName) || fileName.includes(file))
+    )
+    
+    if (relatedFeature) {
+      setSelectedFeature(relatedFeature)
+    }
+  }
+
+  // 機能が選択された時の処理
+  const handleFeatureSelect = (feature: FeatureFile) => {
+    setSelectedFeature(feature)
+    // 機能の最初のファイルを選択
+    if (feature.files.length > 0) {
+      setSelectedFile(feature.files[0])
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -84,10 +108,15 @@ export function DemoLayout({
             {/* Code Panel */}
             <div className="bg-gray-800 rounded-lg p-4 flex flex-col min-h-[500px]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <FileExplorer files={files} />
+                <FileExplorer 
+                  files={files} 
+                  selectedFile={selectedFile}
+                  onFileSelect={handleFileSelect}
+                />
                 <FeatureSelector 
                   features={features} 
-                  onFeatureSelect={setSelectedFeature}
+                  selectedFeature={selectedFeature}
+                  onFeatureSelect={handleFeatureSelect}
                 />
               </div>
               <div className="flex-1">
@@ -95,6 +124,7 @@ export function DemoLayout({
                   features={features} 
                   fileContents={fileContents} 
                   selectedFeature={selectedFeature}
+                  selectedFile={selectedFile}
                 />
               </div>
             </div>
