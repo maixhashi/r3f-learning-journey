@@ -24,3 +24,66 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* コードツールチップ用のスタイル */
+.code-clickable {
+  position: relative;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.code-clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ツールチップのアニメーション */
+.tooltip-enter {
+  opacity: 0;
+  transform: translate(-50%, -100%) scale(0.95);
+}
+
+.tooltip-enter-active {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1);
+  transition: all 0.2s ease;
+}
+
+.tooltip-exit {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1);
+}
+
+.tooltip-exit-active {
+  opacity: 0;
+  transform: translate(-50%, -100%) scale(0.95);
+  transition: all 0.2s ease;
+}
+
+/* コードハイライト用のスタイル */
+.code-highlight-line {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-left: 3px solid #3b82f6 !important;
+  padding-left: 8px !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* スクロールバーのスタイル調整 */
+.code-viewer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.code-viewer::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.code-viewer::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+.code-viewer::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
