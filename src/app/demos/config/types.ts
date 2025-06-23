@@ -1,26 +1,34 @@
 export interface FileNode {
   name: string
   type: 'file' | 'folder'
-  content?: string
-  language?: string
   children?: FileNode[]
+  path?: string
 }
 
 export interface CodeSection {
-  fileName: string
   title: string
   description: string
+  fileName: string
   code: string
-  highlightPatterns?: string[]
-  highlightLines?: number[]
+  highlights?: CodeHighlight[]
+}
+
+export interface CodeHighlight {
+  id: string
+  startLine: number
+  endLine: number
+  startColumn?: number
+  endColumn?: number
+  tooltip: {
+    title: string
+    description: string
+    documentationUrl?: string
+  }
 }
 
 export interface FeatureFile {
-  id: string
   name: string
   description: string
   files: string[]
   codeSections?: CodeSection[]
-  codeSnippet?: string
-  highlightLines?: number[]
 }

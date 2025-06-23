@@ -1,0 +1,83 @@
+.highlight-boxgeometry {
+  background-color: rgba(255, 107, 107, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-boxgeometry:hover {
+  background-color: rgba(255, 107, 107, 0.5);
+}
+
+.highlight-material {
+  background-color: rgba(107, 255, 107, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-material:hover {
+  background-color: rgba(107, 255, 107, 0.5);
+}
+
+.highlight-ambient {
+  background-color: rgba(255, 255, 107, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-ambient:hover {
+  background-color: rgba(255, 255, 107, 0.5);
+}
+
+.highlight-directional {
+  background-color: rgba(107, 107, 255, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-directional:hover {
+  background-color: rgba(107, 107, 255, 0.5);
+}
+
+.highlight-point {
+  background-color: rgba(255, 107, 255, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-point:hover {
+  background-color: rgba(255, 107, 255, 0.5);
+}
+
+.highlight-camera {
+  background-color: rgba(107, 255, 255, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-camera:hover {
+  background-color: rgba(107, 255, 255, 0.5);
+}
+
+.highlight-controls {
+  background-color: rgba(255, 200, 107, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-controls:hover {
+  background-color: rgba(255, 200, 107, 0.5);
+}

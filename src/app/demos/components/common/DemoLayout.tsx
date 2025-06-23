@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Lighting } from './Lighting'
@@ -23,6 +24,8 @@ export function DemoLayout({
   fileContents, 
   children 
 }: DemoLayoutProps) {
+  const [selectedFeature, setSelectedFeature] = useState<FeatureFile | null>(null)
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
@@ -66,12 +69,16 @@ export function DemoLayout({
           <div className="bg-gray-800 rounded-lg p-4 flex flex-col">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <FileExplorer files={files} />
-              <FeatureSelector features={features} />
+              <FeatureSelector 
+                features={features} 
+                onFeatureSelect={setSelectedFeature}
+              />
             </div>
             <div className="flex-1">
               <CodeViewer 
                 features={features} 
                 fileContents={fileContents} 
+                selectedFeature={selectedFeature}
               />
             </div>
           </div>

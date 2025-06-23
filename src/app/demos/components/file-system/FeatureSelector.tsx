@@ -17,21 +17,32 @@ export function FeatureSelector({ features, onFeatureSelect }: FeatureSelectorPr
   }
 
   return (
-    <div className="bg-gray-700 rounded p-3">
-      <h3 className="text-sm font-semibold mb-2 text-gray-200">Features</h3>
-      <div className="space-y-2">
-        {features.map(feature => (
+    <div className="bg-gray-800 text-white text-sm">
+      <div className="p-2 bg-gray-700 font-bold">Features</div>
+      <div className="max-h-64 overflow-y-auto">
+        {features.map((feature) => (
           <div
             key={feature.id}
-            className={`p-2 rounded cursor-pointer transition-colors ${
-              selectedFeature === feature.id 
-                ? 'bg-blue-600 text-white' 
-                : 'bg-gray-600 hover:bg-gray-500 text-gray-200'
+            className={`p-2 cursor-pointer hover:bg-gray-700 border-b border-gray-600 ${
+              selectedFeature === feature.id ? 'bg-gray-700' : ''
             }`}
             onClick={() => handleFeatureClick(feature)}
           >
-            <div className="text-sm font-medium">{feature.name}</div>
-            <div className="text-xs text-gray-300 mt-1">{feature.description}</div>
+            <div className="font-semibold text-blue-300">{feature.name}</div>
+            <div className="text-xs text-gray-400 mb-1">{feature.description}</div>
+            <div className="flex items-center gap-2 text-xs">
+              <span className="text-gray-500">Files:</span>
+              {feature.files.map((file, fileIndex) => (
+                <span key={`${feature.id}-file-${fileIndex}`} className="text-yellow-400">
+                  📄 {file.split('/').pop()}
+                </span>
+              ))}
+              {feature.codeSections && (
+                <span className="text-green-400">
+                  ({feature.codeSections.length} sections)
+                </span>
+              )}
+            </div>
           </div>
         ))}
       </div>
