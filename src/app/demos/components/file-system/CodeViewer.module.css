@@ -81,3 +81,51 @@
 .highlight-controls:hover {
   background-color: rgba(255, 200, 107, 0.5);
 }
+
+.highlight-useframe {
+  background-color: rgba(34, 197, 94, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-useframe:hover {
+  background-color: rgba(34, 197, 94, 0.5);
+}
+
+.highlight-rotation {
+  background-color: rgba(168, 85, 247, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-rotation:hover {
+  background-color: rgba(168, 85, 247, 0.5);
+}
+
+.highlight-delta {
+  background-color: rgba(251, 191, 36, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-delta:hover {
+  background-color: rgba(251, 191, 36, 0.5);
+}
+
+.highlight-ref {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.highlight-ref:hover {
+  background-color: rgba(59, 130, 246, 0.5);
+}

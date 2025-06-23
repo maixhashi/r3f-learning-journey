@@ -14,7 +14,7 @@ const demos = [
     title: 'Animations',
     description: 'useFrameを使ったアニメーション実装',
     icon: '🎬',
-    status: 'planned',
+    status: 'completed',
     features: ['回転アニメーション', '移動', 'スケーリング', 'イージング']
   },
   {
