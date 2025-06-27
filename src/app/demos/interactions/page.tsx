@@ -11,7 +11,7 @@ const interactionDemos = [
     description: 'オブジェクトのクリック検出と反応'
   },
   {
-    id: 'hover-effects',
+    id: 'hover',
     title: 'Hover Effects',
     japaneseTitle: 'ホバーエフェクト',
     description: 'マウスオーバー時の色変化やスケール変更'
