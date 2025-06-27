@@ -38,7 +38,7 @@ const demos = [
     title: 'Interactions',
     description: 'マウス・キーボードインタラクション',
     icon: '🖱️',
-    status: 'planned',
+    status: 'completed',
     features: ['Raycasting', 'Click Events', 'Hover Effects', 'Drag & Drop']
   },
   {
