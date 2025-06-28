@@ -17,10 +17,16 @@ const interactionDemos = [
     description: 'マウスオーバー時の色変化やスケール変更'
   },
   {
-    id: 'drag-drop',
-    title: 'Drag & Drop',
-    japaneseTitle: 'ドラッグ&ドロップ',
+    id: 'dnd-position',
+    title: 'Drag & Drop (Position)',
+    japaneseTitle: 'ドラッグ&ドロップによる位置変更',
     description: 'オブジェクトのドラッグによる移動操作'
+  },
+  {
+    id: 'dnd-scale',
+    title: 'Drag & Drop (Scale)',
+    japaneseTitle: 'ドラッグ&ドロップによる寸法変更',
+    description: 'オブジェクトのドラッグによる寸法変更操作'
   },
   {
     id: 'raycasting',

@@ -48,7 +48,7 @@ export const rotationFeatures: FeatureFile[] = [
               title: "useFrame",
               description: "React Three Fiberのフックで、毎フレーム実行される関数を登録できます。アニメーションの実装に必須のフックです。",
               documentationUrl: "https://threejs.org/docs/#manual/en/introduction/Animation-system",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/api/hooks#useframe"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/api/hooks#useframe"
             }
           },
           {
@@ -61,7 +61,7 @@ export const rotationFeatures: FeatureFile[] = [
               title: "delta",
               description: "前フレームからの経過時間（秒）です。フレームレートに依存しない滑らかなアニメーションを作成するために使用します。",
               documentationUrl: "https://threejs.org/docs/#manual/en/introduction/Animation-system",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/api/hooks#useframe"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/api/hooks#useframe"
             }
           },
           {
@@ -74,7 +74,7 @@ export const rotationFeatures: FeatureFile[] = [
               title: "rotation",
               description: "3Dオブジェクトの回転を制御するプロパティです。x, y, z軸それぞれの回転角度をラジアン単位で指定します。",
               documentationUrl: "https://threejs.org/docs/#api/en/core/Object3D.rotation",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/getting-started/your-first-scene#animating-the-cube"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/tutorials/your-first-scene#animating-the-cube"
             }
           },
           {
@@ -87,7 +87,7 @@ export const rotationFeatures: FeatureFile[] = [
               title: "useRef",
               description: "Reactのフックで、DOM要素や3Dオブジェクトへの参照を保持します。アニメーションで直接オブジェクトを操作する際に必要です。",
               documentationUrl: "https://threejs.org/docs/#api/en/core/Object3D",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/getting-started/your-first-scene#animating-the-cube"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/tutorials/your-first-scene#animating-the-cube"
             }
           }
         ]
@@ -131,7 +131,7 @@ useFrame((state, delta) => {
               title: "時間ベースアニメーション",
               description: "deltaを使用することで、60FPSでも120FPSでも同じ速度でアニメーションが実行されます。これにより、デバイスの性能に関係なく一貫した動作を実現できます。",
               documentationUrl: "https://threejs.org/docs/#manual/en/introduction/Animation-system",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/api/hooks#useframe"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/api/hooks#useframe"
             }
           },
           {
@@ -144,7 +144,7 @@ useFrame((state, delta) => {
               title: "回転速度の制御",
               description: "deltaに係数を掛けることで回転速度を調整できます。0.5を掛けると半分の速度、2を掛けると2倍の速度になります。",
               documentationUrl: "https://threejs.org/docs/#api/en/core/Object3D.rotation",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/getting-started/your-first-scene#animating-the-cube"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/tutorials/your-first-scene#animating-the-cube"
             }
           }
         ]
@@ -195,7 +195,7 @@ useFrame((state, delta) => {
               title: "elapsedTime",
               description: "アニメーション開始からの経過時間（秒）を取得できます。数学関数と組み合わせて周期的なアニメーションを作成する際に使用します。",
               documentationUrl: "https://threejs.org/docs/#api/en/core/Clock",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/api/hooks#useframe"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/api/hooks#useframe"
             }
           },
           {
@@ -208,7 +208,7 @@ useFrame((state, delta) => {
               title: "三角関数アニメーション",
               description: "Math.sin()とMath.cos()を使用して滑らかな周期的動作を作成できます。波の振幅や周波数を調整して様々なパターンを実現できます。",
               documentationUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sin",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/getting-started/your-first-scene#animating-the-cube"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/tutorials/your-first-scene#animating-the-cube"
             }
           },
           {
@@ -221,7 +221,7 @@ useFrame((state, delta) => {
               title: "スケールアニメーション",
               description: "scale.setScalar()を使用してオブジェクトのサイズを動的に変更できます。呼吸するような効果や強調表現に使用されます。",
               documentationUrl: "https://threejs.org/docs/#api/en/core/Object3D.scale",
-              r3fDocumentationUrl: "https://r3f.docs.pmnd.rs/api/objects#transformations"
+              r3fDocumentationUrl: "https://docs.pmnd.rs/react-three-fiber/api/objects#transformations"
             }
           }
         ]
