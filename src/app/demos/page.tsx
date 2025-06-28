@@ -48,6 +48,14 @@ const demos = [
     icon: '🏗️',
     status: 'planned',
     features: ['GLTF Loader', 'アニメーション', 'テクスチャ', 'Mixamo']
+  },
+  {
+    id: 'library-integration',
+    title: 'Library Integration',
+    description: '外部ライブラリとの統合（Leva、React Spring等）',
+    icon: '🔧',
+    status: 'completed',
+    features: ['Leva GUI', 'React Spring', 'Physics Engine', 'Post Processing']
   }
 ]
 
@@ -134,6 +142,36 @@ export default function DemosIndex() {
               {demos.filter(d => d.status === 'completed').length} / {demos.length}
             </div>
             <p className="text-gray-300 text-sm">デモ完了</p>
+          </div>
+        </div>
+
+        {/* 新機能ハイライト */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-6">
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white text-sm font-bold">NEW</span>
+              </div>
+              <h3 className="text-xl font-bold text-white">Library Integration</h3>
+            </div>
+            <p className="text-gray-300 mb-4">
+              外部ライブラリとReact Three Fiberの統合デモが追加されました！
+              Levaを使用したリアルタイムGUIコントロールで3Dシーンを自由に操作できます。
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
+                🎛️ Leva GUI Controls
+              </span>
+              <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                ⚡ Real-time Updates
+              </span>
+              <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">
+                📁 Organized Folders
+              </span>
+              <span className="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">
+                🎨 Multiple Input Types
+              </span>
+            </div>
           </div>
         </div>
       </div>
