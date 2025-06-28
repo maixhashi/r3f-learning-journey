@@ -35,13 +35,7 @@ const interactionDemos = [
     description: 'マウス位置からのレイキャストによる詳細な当たり判定'
   },
   {
-    id: 'keyboard-controls',
-    title: 'Keyboard Controls',
-    japaneseTitle: 'キーボード操作',
-    description: 'キーボード入力によるオブジェクト制御'
-  },
-  {
-    id: 'camera-controls',
+    id: 'camera',
     title: 'Camera Controls',
     japaneseTitle: 'カメラ操作',
     description: 'OrbitControlsを使ったカメラの回転・ズーム操作'
