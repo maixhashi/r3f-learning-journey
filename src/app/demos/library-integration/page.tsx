@@ -253,7 +253,7 @@ export default function LibraryIntegrationPage() {
               <div className="space-y-2">
                 <div className="flex items-center text-sm text-gray-300">
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                  ジェスチャー連動
+                  クリックイベント連動
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
