@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cursor settings (sourced from my-cursor-settings hub via apply)
+.cursor/
