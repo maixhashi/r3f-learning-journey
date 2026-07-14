@@ -1,3 +1,5 @@
 export { DemoLayout } from './DemoLayout'
 export { DemoLayoutWithControls, useCameraControl } from './DemoLayoutWithControls'
 export { Lighting } from './Lighting'
+export { ThreeDemoLayout } from './ThreeDemoLayout'
+export type { ThreeSceneFactory } from './ThreeDemoLayout'

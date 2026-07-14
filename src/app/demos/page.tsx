@@ -2,6 +2,14 @@ import Link from 'next/link'
 
 const demos = [
   {
+    id: 'three-fundamentals',
+    title: 'Three.js Fundamentals',
+    description: '素の Three.js 基礎（Scene / Camera / Renderer）',
+    icon: '🧊',
+    status: 'in-progress',
+    features: ['Scene', 'Camera', 'WebGLRenderer', 'requestAnimationFrame']
+  },
+  {
     id: 'basic-shapes',
     title: 'Basic Shapes',
     description: '基本的な3D図形（Box, Sphere, Cylinder等）の表示',
@@ -60,21 +68,24 @@ const demos = [
 ]
 
 function DemoCard({ demo }: { demo: typeof demos[0] }) {
-  const isCompleted = demo.status === 'completed'
-  
+  const isLinked = demo.status === 'completed' || demo.status === 'in-progress'
+  const badgeLabel =
+    demo.status === 'completed' ? 'Complete' : demo.status === 'in-progress' ? 'In Progress' : 'Planned'
+  const badgeClass =
+    demo.status === 'completed'
+      ? 'bg-green-500/20 text-green-300 border border-green-400/30'
+      : demo.status === 'in-progress'
+        ? 'bg-blue-500/20 text-blue-300 border border-blue-400/30'
+        : 'bg-yellow-500/20 text-yellow-300 border border-yellow-400/30'
+
   return (
     <div className={`relative bg-white/10 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 ${
-      isCompleted 
-        ? 'hover:bg-white/20 transform hover:scale-105' 
+      isLinked
+        ? 'hover:bg-white/20 transform hover:scale-105'
         : 'opacity-60 cursor-not-allowed'
     }`}>
-      {/* ステータスバッジ */}
-      <div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${
-        isCompleted 
-          ? 'bg-green-500/20 text-green-300 border border-green-400/30' 
-          : 'bg-yellow-500/20 text-yellow-300 border border-yellow-400/30'
-      }`}>
-        {isCompleted ? 'Complete' : 'Planned'}
+      <div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${badgeClass}`}>
+        {badgeLabel}
       </div>
 
       <div className="text-4xl mb-4">{demo.icon}</div>
@@ -82,7 +93,7 @@ function DemoCard({ demo }: { demo: typeof demos[0] }) {
       <p className="text-gray-300 mb-4 text-sm leading-relaxed">
         {demo.description}
       </p>
-      
+
       <div className="mb-4">
         <h4 className="text-sm font-medium text-gray-400 mb-2">主な機能:</h4>
         <div className="flex flex-wrap gap-1">
@@ -97,7 +108,7 @@ function DemoCard({ demo }: { demo: typeof demos[0] }) {
         </div>
       </div>
 
-      {isCompleted ? (
+      {isLinked ? (
         <Link href={`/demos/${demo.id}`} className="block">
           <button className="w-full bg-blue-500/20 hover:bg-blue-500/30 border border-blue-400/30 text-blue-300 py-2 px-4 rounded-lg transition-all duration-200">
             デモを見る →
@@ -123,7 +134,7 @@ export default function DemosIndex() {
           </Link>
           <h1 className="text-5xl font-bold text-white mb-4">Demos</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            機能別に分かれたデモページ。各機能を個別に詳しく学習できます。
+            Three.js 基礎から R3F まで、機能別に分かれたデモで段階的に学習できます。
           </p>
         </div>
 
@@ -139,7 +150,7 @@ export default function DemosIndex() {
           <div className="inline-block bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <h3 className="text-lg font-bold text-white mb-2">学習進捗</h3>
             <div className="text-2xl font-bold text-green-300">
-              {demos.filter(d => d.status === 'completed').length} / {demos.length}
+              {demos.filter(d => d.status === 'completed' || d.status === 'in-progress').length} / {demos.length}
             </div>
             <p className="text-gray-300 text-sm">デモ完了</p>
           </div>
