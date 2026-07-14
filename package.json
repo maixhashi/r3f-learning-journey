@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "playwright test",
-    "capture:screenshots": "playwright test e2e/capture-smoke.spec.ts --project=chromium"
+    "capture:screenshots": "playwright test e2e/capture-smoke.spec.ts --project=chromium",
+    "capture:three-fundamentals": "playwright test e2e/capture-three-fundamentals.spec.ts --project=chromium"
   },
   "dependencies": {
     "@react-spring/core": "^10.0.1",
