@@ -18,6 +18,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Playwright (e2e / screenshots)
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+npm run capture:screenshots
+```
+
+Screenshots are written under `docs/screenshots/{topic}/`. Capture every UI-changed route before opening a PR.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
