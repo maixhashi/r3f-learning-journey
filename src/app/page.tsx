@@ -9,8 +9,8 @@ export default function Home() {
             R3F Learning Journey
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            React Three Fiberを使った3Dグラフィックスの学習プロジェクト。
-            基本的な図形から高度なインタラクションまで段階的に学習できます。
+            Three.js の基礎から React Three Fiber まで段階的に学ぶプロジェクト。
+            素の Scene / Camera / Renderer を掴んでから、R3F のデモへ進みます。
           </p>
         </div>
 
@@ -51,9 +51,9 @@ export default function Home() {
           <h3 className="text-2xl font-bold text-white mb-6">使用技術</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'Next.js 14',
-              'React Three Fiber',
+              'Next.js 15',
               'Three.js',
+              'React Three Fiber',
               'TypeScript',
               'Tailwind CSS'
             ].map((tech) => (
